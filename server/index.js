@@ -10,10 +10,11 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: ["https://ticketing-system-ten.vercel.app/"],
+    origin: ["https://ticketing-system-ten.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   }));
+
 app.use(express.json());
 
 app.use("/api/events", eventRoutes);
