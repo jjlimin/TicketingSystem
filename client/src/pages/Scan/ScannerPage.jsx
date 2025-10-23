@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { QrReader } from "react-qr-reader-es6";
+import QrReader from "react-qr-reader-es6"; // {}
 import {scanTicket} from "../../services/api.js";
 
 import React from 'react'
