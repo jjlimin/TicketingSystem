@@ -9,7 +9,11 @@ import registrationRoutes from "./routes/registrationRoutes.js";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: ["https://ticketing-system-ten.vercel.app/"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  }));
 app.use(express.json());
 
 app.use("/api/events", eventRoutes);
