@@ -20,6 +20,8 @@ export const registerUser = async (req, res) => {
 
 export const scanTicket = async (req, res) => {
     const {qrCode} = req.body;
+    console.log("Resived scan: ", qrCode);
+    
     const registration = await Registration.findOne({qrCode});
     if (!registration) {
         return res.status(404).json({message: "Ticket not found..."});
