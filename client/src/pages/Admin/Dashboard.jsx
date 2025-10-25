@@ -8,6 +8,8 @@ function Dashboard() {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
+  const mainLink="https://ticketing-system-ten.vercel.app";
+
   useEffect(() => {
     getEvent().then(res => setEvents(res.data));
   }, [])
@@ -43,7 +45,7 @@ function Dashboard() {
             >
               Export
             </button>
-            <CopyButton text={ev.registrationLink}/>
+            <CopyButton text={mainLink + ev.registrationLink}/>
           </div>
         </div>
           
