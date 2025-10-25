@@ -6,23 +6,19 @@ function ScannerPage() {
   const [lastResult, setLastResult] = useState("");
   const [message, setMessage] = useState("Point your camera at a QR code...");
 
-  const handleScan = async (data) => {
-    if (!data) return;
+  const handleScan = async (qrValue) => {
+    if (!qrValue) return;
+    if (qrValue === lastResult) return;
 
-    // Normalize different QR reader formats
-    const qrValue = typeof data === "string" ? data : data?.text || data?.rawValue;
+    setLastResult(qrValue);
+    console.log("Scanned value:", qrValue);
 
-    if (qrValue && qrValue !== lastResult) {
-      setLastResult(qrValue);
-      console.log("Scanned value:", qrValue);
-
-      try {
-        const res = await scanTicket(qrValue);
-        setMessage(`${res.data.message}`);
-      } catch (error) {
-        console.error("Scan error:", error.response?.data || error);
-        setMessage("Invalid or unregistered ticket");
-      }
+    try {
+      const res = await scanTicket(qrValue);
+      setMessage(res.data.message);
+    } catch (error) {
+      console.error("Scan error:", error.response?.data || error);
+      setMessage("Invalid or unregistered ticket");
     }
   };
 
@@ -33,7 +29,7 @@ function ScannerPage() {
         <QrReader
           constraints={{ facingMode: "environment" }}
           scanDelay={500}
-          onResult={(data, error) => {
+          onScan={(data, error) => {
             if (data) handleScan(data);
             if (error) console.debug("QR error:", error);
           }}
