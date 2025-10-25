@@ -16,6 +16,7 @@ function ScannerPage() {
     try {
       const res = await scanTicket(qrValue);
       setMessage(res.data.message);
+      alert(res.data.message);
     } catch (error) {
       console.error("Scan error:", error.response?.data || error);
       setMessage("Invalid or unregistered ticket");
