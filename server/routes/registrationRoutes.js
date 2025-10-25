@@ -3,7 +3,8 @@ import {registerUser, scanTicket } from "../controllers/registrationController.j
 
 const router = express.Router();
 
-router.post("/:eventId", registerUser);
 router.post("/scan", scanTicket);
+router.post("/:eventId", registerUser);
+
 
 export default router;
