@@ -33,7 +33,7 @@ function RegisterPage() {
       ) : (
         <div className="flex flex-col items-center text-center">
           <p className="mb-3 font-semibold text-gray-700">Your Ticket QR Code</p>
-          <QRCodeCanvas value={ticket} size={256} />
+          <QRCodeCanvas value={ticket} size={200} />
           <p className="text-sm mt-3 text-gray-500">Save this QR for entry.</p>
         </div>
       )}

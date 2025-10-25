@@ -24,9 +24,12 @@ function ScannerPage() {
         <h1 className="text-xl font-bold mb-4">Ticket Scanner</h1>
         <div className="w-80 border rounded-xl overflow-hidden">
             <QrReader
-                constraints={{facingMode: "enviroment"}}
+                constraints={{facingMode: "environment"}}
                 onResult={(data, error) => {
-                    if (data) handleScan(data);
+                    if (data) {
+                        console.log("Scanned:", data.text);
+                        handleScan(data);
+                    }
                     if (error) console.info(error);
                 }}
             />
