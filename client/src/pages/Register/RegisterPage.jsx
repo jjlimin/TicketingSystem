@@ -13,6 +13,7 @@ function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await registerUser(eventId, form);
+    console.log("QR Code value from backend:", res.data.qrCode);
     setTicket(res.data.qrCode);
   }
 
