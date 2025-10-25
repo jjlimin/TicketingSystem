@@ -44,7 +44,7 @@ function CreateEvent() {
         <div className="mt-4">
           <p className="font-semibold">Registration Link:</p>
           <a href={link} className="text-blue-500 underline">{link}</a>
-          <CopyButton text={link}/>
+          <CopyButton text={`${window.location.origin}${link}`}/>
         </div>
       )}
     </div>
